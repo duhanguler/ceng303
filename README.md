@@ -76,9 +76,7 @@ _**Note:** If you face a distutils error in pip, use `--ignore-installed` flag i
    ```
 
 
-## UML diagrams
-
-You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
+## Project Algorithm and Logic
 
 ```mermaid
 classDiagram
