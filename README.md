@@ -2,7 +2,6 @@
 
 Hi! Our project is **Banking Clerks with Python**. 
 
-                                                                           |
 
 # Contributors
 
