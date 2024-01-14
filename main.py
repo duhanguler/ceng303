@@ -65,6 +65,35 @@ class ClerkCalculator():
         }
         self.dict_clerks[shift].append(new_clerk)
         return new_clerk
+    
+    ## Test for Check Process
+
+    """def getAvailableClerk(self, shift, time_now, wait_until, process_time):
+        # Check if any available clerk for the shift
+        for clerk in self.dict_clerks[shift]:
+            # Find available clerk
+            # Check if clerk available at given time
+            if clerk['available_at'] <= time_now:
+                clerk['available_at'] = time_now + process_time
+                print("Bu clerk müşteriyi bekletmeden " + util.convertMinuteToTime(wait_until) + " 'de işleme aldı: :")
+                print(clerk)
+                return clerk
+            # Check if clerk will be available until wait time exceeds
+            if clerk['available_at'] < wait_until:
+                clerk['available_at'] = wait_until + process_time
+                print("Bu clerk müşteriyi bekletip " + util.convertMinuteToTime(wait_until) + " 'de işleme aldı: :")
+                print(clerk)
+                return clerk
+
+        # If no available clerk is found, create new one
+        new_clerk = {
+            'name': randomGenerator.generateName(),
+            'available_at': time_now + process_time
+        }
+        self.dict_clerks[shift].append(new_clerk)
+        print("Clerk sayısı yetmediği için şu clerk işe geldi: ")
+        print(clerk)
+        return new_clerk"""
 
 
     # Initiate Runner
@@ -81,12 +110,28 @@ class ClerkCalculator():
                 clerk = self.getAvailableClerk(shift, minute_at, wait_until, process_time)
                 self.dict_customers[util.convertMinuteToTime(minute_at)]['clerk_processed'] = clerk['name']
 
+        print(f"Clerk needed for {len(self.dict_customers)} customer \n"
+                f"Morning shift: {len(self.dict_clerks['morning'])} \n"
+                f"Noon shift: {len(self.dict_clerks['noon'])} \n"
+                f"Night shift: {len(self.dict_clerks['night'])}")
         
         util.writeJsonFile(config.file_customer, self.dict_customers)
-
+        # Test case for write processed data
+        '''
+        print("***************************\n")
+        print("Morning Shift Last Process per Clerk\n")
+        print(self.dict_clerks['morning'])
+        print("***************************\n")
+        print("Noon Shift Last Process per Clerk\n")
+        print(self.dict_clerks['noon'])
+        print("***************************\n")
+        print("Night Shift Last Process per Clerk\n")
+        print(self.dict_clerks['night'])'''
         
 
 
 
-'''if __name__ == "__main__":'''
-    
+if __name__ == "__main__":
+    randomGenerator.generateCustomers(1000)
+    myCC = ClerkCalculator()
+    myCC.run()
