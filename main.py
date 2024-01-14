@@ -116,6 +116,17 @@ class ClerkCalculator():
                 f"Night shift: {len(self.dict_clerks['night'])}")
         
         util.writeJsonFile(config.file_customer, self.dict_customers)
+        # Test case for write processed data
+        '''
+        print("***************************\n")
+        print("Morning Shift Last Process per Clerk\n")
+        print(self.dict_clerks['morning'])
+        print("***************************\n")
+        print("Noon Shift Last Process per Clerk\n")
+        print(self.dict_clerks['noon'])
+        print("***************************\n")
+        print("Night Shift Last Process per Clerk\n")
+        print(self.dict_clerks['night'])'''
         
 
 
@@ -124,3 +135,15 @@ if __name__ == "__main__":
     randomGenerator.generateCustomers(1000)
     myCC = ClerkCalculator()
     myCC.run()
+
+# If we want to learn how many clerks need to employed for worst and best case,
+# We can run this:
+"""if __name__ == "__main__":
+    test_run_counter = 0
+    while(test_run_counter < config.test_run):
+        print('**********************')
+        print(str(test_run_counter+1) + ". Run")
+        randomGenerator.generateCustomers(1000)
+        myCC = ClerkCalculator()
+        myCC.run()
+        test_run_counter = test_run_counter + 1"""
