@@ -150,7 +150,7 @@ sequenceDiagram
     ClerkCalculator ->> util: convertMinuteToTime(minute_at)
     ClerkCalculator ->> util: readJsonFile(config.file_customer)
     ClerkCalculator ->> ClerkCalculator: findShift(minute_at)
-    ClerkCalculator ->> ClerkCalculator: getAvailableClerk(...)
+    ClerkCalculator ->> ClerkCalculator: getAvailableClerk(self, shift, time_now, wait_until, process_time)
     ClerkCalculator ->> util: convertMinuteToTime(wait_until)
     ClerkCalculator ->> util: writeJsonFile(config.file_customer, dict_customers)
   end
