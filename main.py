@@ -116,17 +116,6 @@ class ClerkCalculator():
                 f"Night shift: {len(self.dict_clerks['night'])}")
         
         util.writeJsonFile(config.file_customer, self.dict_customers)
-        # Test case for write processed data
-        '''
-        print("***************************\n")
-        print("Morning Shift Last Process per Clerk\n")
-        print(self.dict_clerks['morning'])
-        print("***************************\n")
-        print("Noon Shift Last Process per Clerk\n")
-        print(self.dict_clerks['noon'])
-        print("***************************\n")
-        print("Night Shift Last Process per Clerk\n")
-        print(self.dict_clerks['night'])'''
         
 
 
