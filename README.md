@@ -11,7 +11,7 @@ No sorting for contributors.
 - [Firuza Rahimova](https://github.com/firagimova)
 - [Erham Safa Aksoy](https://github.com/ErhamSafa)
 - [Murat Ergin](https://github.com/MurattErginn)
-- [Mehmet Yalçın](https://github.com/aviascerate)
+- [Mehmet Yalçın](https://github.com/myalcinnurd)
 
 ## How to use?
 
