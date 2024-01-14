@@ -2,10 +2,11 @@
 import util, config
 import randomGenerator
 
-
 class ClerkCalculator():
     def __init__(self):
         self.dict_customers = {}
+        self.time_minute = 0 #Day starts at 00:00
+
 
         # Start shifts for minimum clerks, so its 1.
         self.dict_clerks = {
@@ -29,11 +30,12 @@ class ClerkCalculator():
             ],
         }
 
+
+
     # Calculate which shift by minute value
     def findShift(self, minute_at):
         for shift in config.dict_shifts:
-            if minute_at >= config.dict_shifts[shift]['starts_at'] and minute_at <= config.dict_shifts[shift][
-                'ends_at']:
+            if minute_at >= config.dict_shifts[shift]['starts_at'] and minute_at <= config.dict_shifts[shift]['ends_at']:
                 return shift
         return None
 
@@ -64,7 +66,27 @@ class ClerkCalculator():
         self.dict_clerks[shift].append(new_clerk)
         return new_clerk
 
+
     # Initiate Runner
-    # def run(self):
+    def run(self):
+        # Read customer data from file
+        self.dict_customers = util.readJsonFile(config.file_customer)
+        for minute_at in range(config.int_max_minute):
+        #     # Check if any customer came at the minute
+            if util.convertMinuteToTime(minute_at) in self.dict_customers:
+                customer = self.dict_customers[util.convertMinuteToTime(minute_at)]
+                shift = self.findShift(minute_at)
+                wait_until = (minute_at + config.dict_customer_types[customer['type']]['time_wait']) % config.int_max_minute
+                process_time = config.dict_customer_types[customer['type']]['time_process']
+                clerk = self.getAvailableClerk(shift, minute_at, wait_until, process_time)
+                self.dict_customers[util.convertMinuteToTime(minute_at)]['clerk_processed'] = clerk['name']
+
+        
+        util.writeJsonFile(config.file_customer, self.dict_customers)
+
+        
 
 
+
+'''if __name__ == "__main__":'''
+    
