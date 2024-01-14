@@ -2,6 +2,19 @@
 
 Hi! Our project is **Banking Clerks with Python**. 
 
+# About automation
+
+Used integer numbers to represent time by minutes.
+
+It creates customers at a random arrival time and writes a json file
+Process reads the data from the json file and starts
+1. Checks arrival times by minutes
+2. Checks related shift
+3. Check for an available clerk and adds a new one if not exist
+4. Sets the clerk not available until process time ends
+5. Sets the clerk as "clerk_processed" for the customer
+6. Write the data to json file
+7. Prints how many clerks needed for the customers by shift
 
 # Contributors
 
