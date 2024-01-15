@@ -75,13 +75,13 @@ class ClerkCalculator():
             # Check if clerk available at given time
             if clerk['available_at'] <= time_now:
                 clerk['available_at'] = time_now + process_time
-                print("Bu clerk müşteriyi bekletmeden " + util.convertMinuteToTime(wait_until) + " 'de işleme aldı: :")
+                print("This clerk didn't wait customer and took process at " + util.convertMinuteToTime(wait_until) + ": ")
                 print(clerk)
                 return clerk
             # Check if clerk will be available until wait time exceeds
             if clerk['available_at'] < wait_until:
                 clerk['available_at'] = wait_until + process_time
-                print("Bu clerk müşteriyi bekletip " + util.convertMinuteToTime(wait_until) + " 'de işleme aldı: :")
+                print("This clerk waited customer and took process at " + util.convertMinuteToTime(wait_until) + ": ")
                 print(clerk)
                 return clerk
 
@@ -91,7 +91,7 @@ class ClerkCalculator():
             'available_at': time_now + process_time
         }
         self.dict_clerks[shift].append(new_clerk)
-        print("Clerk sayısı yetmediği için şu clerk işe geldi: ")
+        print("Not enough clerk and this clerk started job: ")
         print(clerk)
         return new_clerk"""
 
