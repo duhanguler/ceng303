@@ -94,41 +94,43 @@ _**Note:** If you face a distutils error in pip, use `--ignore-installed` flag i
 ```mermaid
 classDiagram
   class ClerkCalculator {
-    - dict_customers
-    - time_minute
-    - dict_clerks
+    - dict_customers: dict
+    - time_minute: int
+    - dict_clerks: dict
 
     + findShift(minute_at: int): string
-    + createNewClerk(): void
-    + getAvailableClerk(shift: string, time_now: int, wait_until: int, process_time: int): void
+    + createNewClerk(): dict
+    + getAvailableClerk(shift: string, time_now: int, wait_until: int, process_time: int): dict
     + run(): void
   }
 
   class util {
-    + readJsonFile(file_path: string): void
-    + writeJsonFile(file_path: string, data: []): void
+    + readJsonFile(file_path: string): dict
+    + writeJsonFile(file_path: string, data: dict): void
     + convertTimeToMinute(time: string): int
     + convertMinuteToTime(minute_at: int): string
   }
 
   class randomGenerator {
     + generateName(): string
-    + generateMinutes(count: int): []
+    + generateMinutes(count: int): list
     + generateCustomers(count: int): void
   }
 
   class config {
-    - dict_shifts
-    - int_max_minute
-    - arr_customer_types
-    - file_customer
-    - test_run
-    - turkish_names
+    - dict_shifts: dict
+    - int_max_minute: int
+    - arr_customer_types: list
+    - file_customer: string
+    - test_run: int
+    - dict_customer_types: dict
+    - turkish_names: dict
   }
 
   ClerkCalculator -- util
   ClerkCalculator -- randomGenerator
   ClerkCalculator -- config
+
 
 ```
 
